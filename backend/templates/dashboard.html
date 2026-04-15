@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+  <h1>Dashboard</h1>
+  <p class="subtitle">Welcome to the mock IT admin panel. Choose a workflow to continue.</p>
+
+  <section class="grid-links">
+    <a class="quick-card" href="/users">
+      <strong>Users</strong>
+      Review account roles and trigger password reset or delete actions.
+    </a>
+    <a class="quick-card" href="/users/create">
+      <strong>Create User</strong>
+      Add a new user with either user or admin role.
+    </a>
+  </section>
+{% endblock %}

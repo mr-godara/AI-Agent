@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Users{% endblock %}
+
+{% block content %}
+  <h1>Users</h1>
+  <p class="subtitle">Manage existing users. Each row includes direct reset and delete actions.</p>
+
+  {% if message %}
+    <p class="alert">{{ message }}</p>
+  {% endif %}
+
+  <table>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in users %}
+        <tr>
+          <td data-label="Email"><code>{{ user.email }}</code></td>
+          <td data-label="Role">{{ user.role }}</td>
+          <td data-label="Actions">
+            <div class="actions">
+              <form method="post" action="/users/reset-password">
+                <input type="hidden" name="email" value="{{ user.email }}" />
+                <button type="submit">Reset Password for {{ user.email }}</button>
+              </form>
+
+              <form method="post" action="/users/delete">
+                <input type="hidden" name="email" value="{{ user.email }}" />
+                <button class="danger" type="submit">Delete User {{ user.email }}</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

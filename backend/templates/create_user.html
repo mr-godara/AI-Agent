@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Create User{% endblock %}
+
+{% block content %}
+  <h1>Create User</h1>
+  <p class="subtitle">Add a new account and assign the right permission role.</p>
+
+  {% if message %}
+    <p class="alert">{{ message }}</p>
+  {% endif %}
+
+  <form method="post" action="/users/create" class="form-stack">
+    <div class="form-row">
+      <label>Email</label>
+      <input type="email" name="email" placeholder="Email" required />
+    </div>
+
+    <div class="form-row">
+      <label for="role">Role</label>
+      <select id="role" name="role" aria-label="Role">
+        <option value="user">user</option>
+        <option value="admin">admin</option>
+      </select>
+    </div>
+
+    <div>
+      <button type="submit">Create</button>
+    </div>
+  </form>
+{% endblock %}

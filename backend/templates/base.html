@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}Mock IT Admin Panel{% endblock %}</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="page-wrap">
+      <header class="topbar">
+        <div class="brand">Mock IT Admin Panel</div>
+        {% if request.url.path != "/" %}
+          <nav class="nav-links" aria-label="Primary">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/users">Users</a>
+            <a href="/users/create">Create User</a>
+            <a href="/logout">Logout</a>
+          </nav>
+        {% endif %}
+      </header>
+
+      <main class="panel">{% block content %}{% endblock %}</main>
+    </div>
+  </body>
+</html>
